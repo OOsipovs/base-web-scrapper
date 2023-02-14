@@ -3,6 +3,7 @@ GEM
   specs:
     csv (3.2.6)
     date (3.3.3)
+    json (2.6.3)
     nokogiri (1.14.2-arm64-darwin)
       racc (~> 1.4)
     open-uri (0.3.0)
@@ -20,6 +21,7 @@ PLATFORMS
 
 DEPENDENCIES
   csv
+  json
   nokogiri
   open-uri
 
