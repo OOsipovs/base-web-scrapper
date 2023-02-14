@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
+require 'csv'
 
 def scrapping
     html = URI.open("https://github.com/search?q=ruby+web+scraping")
@@ -13,14 +14,24 @@ def scrapping
         items_array << [name, description]
     end
 
-    items_array.each_with_index do |item, index|
-        puts "--------------"
-        puts "#{index+1} - #{item[0]}"
-        puts "#{item[1]}"
-    end
+    export(items_array)
+    #items_array.each_with_index do |item, index|
+    #    puts "--------------"
+    #    puts "#{index+1} - #{item[0]}"
+    #    puts "#{item[1]}"
+    #end
 
 end
 
+def export(items_array)
+    file_path = "data.csv"
+    CSV.open(file_path,'w') do |csv|
+        csv << ['#', 'Name', 'Description']
+        items_array.each_with_index do |item|
+            csv << [index+1, item[0], item[1]]
+        end
+    end
+end
 
 scrapping
 
